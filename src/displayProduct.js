@@ -2,23 +2,21 @@ import React, { PureComponent } from "react";
 import "./App.css";
 import { loadAllItems, loadPromotions } from "./datbase";
 const items = loadAllItems();
-const chargeitems = loadPromotions(); 
+const chargeitems = loadPromotions();
 
 class Product extends PureComponent {
   constructor(pros) {
-    super(pros), 
-    (this.state = {});
+    super(pros), (this.state = {});
   }
 
-  chargeImformation = (chargeitems) =>{
-      items.forEach(item => {
-          if(item.concat(chargeitems)) 
-             return chargeitems.type; 
-      });
+  chargeImformation = chargeitems => {
+    items.forEach(item => {
+      if (item.concat(chargeitems)) return chargeitems.type;
+    });
   };
 
   render() {
-    return(
+    return (
       <div>
         <table border="1">
           <thead>
@@ -36,7 +34,8 @@ class Product extends PureComponent {
                   <td>{item.name}</td>
                   <td>{item.unit}</td>
                   <td>{item.price}</td>
-                  <td onChange="chargeImformation()"></td>
+                  <td onChange="chargeImformation()" />
+                  <button>添加购物车</button>
                 </tr>
               );
             })}
@@ -46,6 +45,5 @@ class Product extends PureComponent {
     );
   }
 }
-
 
 export default Product;
